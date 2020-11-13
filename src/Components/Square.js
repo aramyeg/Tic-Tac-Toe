@@ -15,12 +15,33 @@ function Square({...props}) {
     font-size: 14vh;
     text-align: center;
     cursor: default;
-    font-family: Roboto;
+    
+    div{
+      font-family: Roboto;
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-sizing: border-box;
+      animation-name: appear;
+      animation-duration: 0.8s;
+      white-space: nowrap;
+    }
+    
+    @keyframes appear {
+      from {
+        transform: scale(0.1);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
   `;
 
   return (
-    <SquareWrapper>
-
+    <SquareWrapper >
+      <div>
+        {/*put X or O here */}
+      </div>
     </SquareWrapper>
   );
 }
