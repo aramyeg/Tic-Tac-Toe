@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "typeface-roboto";
+import "typeface-share-tech-mono";
 import './index.css';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';

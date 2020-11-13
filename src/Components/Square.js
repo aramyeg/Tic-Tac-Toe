@@ -6,8 +6,8 @@ function Square({...props}) {
 
   const SquareWrapper = styled.div`
     flex-direction: row;
-    background-color: #ebea8e;
-    color: #84af84;
+    background-color: ${props.color ? props.color : "#c39ea0"};
+    color: black;
     flex: 1 1 auto;
     display: block;
     margin: 5px;
@@ -15,11 +15,12 @@ function Square({...props}) {
     font-size: 14vh;
     text-align: center;
     cursor: default;
+    font-family: Roboto;
   `;
 
   return (
     <SquareWrapper>
-      
+
     </SquareWrapper>
   );
 }

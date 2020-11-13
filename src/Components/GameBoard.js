@@ -20,24 +20,33 @@ function GameBoard({...props}) {
     width: 100%;
   `;
 
+  const HDependant = styled.div`
+    font-size: 6vh;
+    font-weight: 700;
+    padding: 10px;
+  `;
+
   return (
-    <GameBoardWrapper >
-      <BoardRow>
-        <Square/>
-        <Square/>
-        <Square/>
-      </BoardRow>
-      <BoardRow>
-        <Square/>
-        <Square/>
-        <Square/>
-      </BoardRow>
-      <BoardRow>
-        <Square/>
-        <Square/>
-        <Square/>
-      </BoardRow>
-    </GameBoardWrapper>
+    <>
+      <HDependant>Player Turn : X</HDependant>
+      <GameBoardWrapper >
+        <BoardRow>
+          <Square/>
+          <Square/>
+          <Square/>
+        </BoardRow>
+        <BoardRow>
+          <Square/>
+          <Square/>
+          <Square/>
+        </BoardRow>
+        <BoardRow>
+          <Square/>
+          <Square/>
+          <Square/>
+        </BoardRow>
+      </GameBoardWrapper>
+    </>
   );
 }
 
