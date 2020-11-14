@@ -4,7 +4,16 @@ import GameBoard from "./GameBoard";
 
 function App() {
 
-  const AppWrapper = styled.div`
+  
+
+  return (
+    <AppWrapper>
+      <GameBoard />
+      <ResetButton>Reset</ResetButton>
+    </AppWrapper>
+  );
+}
+const AppWrapper = styled.div`
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -40,13 +49,4 @@ function App() {
        padding: 0.35em;
      }
   `;
-
-  return (
-    <AppWrapper>
-      <GameBoard />
-      <ResetButton>Reset</ResetButton>
-    </AppWrapper>
-  );
-}
-
 export default App;
