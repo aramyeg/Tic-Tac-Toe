@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import GameBoard from "./GameBoard";
 
-function App() {
-
-  const AppWrapper = styled.div`
+const AppWrapper = styled.div`
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -12,8 +10,8 @@ function App() {
     flex-direction: column;
   `;
 
-  const ResetButton = styled.button`
-    display:inline-block;
+const ResetButton = styled.button`
+     display:inline-block;
      padding:0.35em 1.2em;
      border:0.1em solid #FFFFFF;
      margin:0.3em;
@@ -40,6 +38,8 @@ function App() {
        padding: 0.35em;
      }
   `;
+
+function App() {
 
   return (
     <AppWrapper>

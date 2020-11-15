@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-
-function Square({...props}) {
-
-  const SquareWrapper = styled.div`
+const SquareWrapper = styled.div`
     flex-direction: row;
-    background-color: ${props.color ? props.color : "#c39ea0"};
+    background-color: #c39ea0;
     color: black;
     flex: 1 1 auto;
     display: block;
@@ -37,10 +34,12 @@ function Square({...props}) {
     }
   `;
 
+function Square({char, clickHandler, i, j, ...props}) {
+
   return (
-    <SquareWrapper >
+    <SquareWrapper onClick={()=>{clickHandler(i,j)}} >
       <div>
-        {/*put X or O here */}
+        {char}
       </div>
     </SquareWrapper>
   );
