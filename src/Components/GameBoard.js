@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, memo} from "react";
 import styled from "styled-components";
 import Square from "./Square";
 
@@ -24,7 +24,7 @@ const HDependant = styled.div`
     padding: 10px;
   `;
 
-function GameBoard({...props}) {
+function GameBoard({gameCount, ...props}) {
 
   const [board, setBoard] = useState(
     [
@@ -34,9 +34,26 @@ function GameBoard({...props}) {
     ]
   );
 
+  const [turn, setTurn] = useState("X");
+
+  useEffect(()=>{
+
+    setBoard([
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ]);
+
+    setTurn("X");
+
+  }, [gameCount])
+
   const clickHandler = (i, j) => {
-    const shallowBoard = [...board];
-    shallowBoard[i][j] = "X";
+    const shallowBoard = board.map(row => [...row] );
+    shallowBoard[i][j] = turn;
+
+
+    setTurn(turn === "X" ? "O" : "X");
     setBoard(shallowBoard);
   };
 
@@ -55,7 +72,7 @@ function GameBoard({...props}) {
 
   return (
     <>
-      <HDependant>Player Turn : X</HDependant>
+      <HDependant>Player Turn : {turn}</HDependant>
       <GameBoardWrapper >
         {renderRows}
       </GameBoardWrapper>
@@ -63,4 +80,4 @@ function GameBoard({...props}) {
   );
 }
 
-export default GameBoard;
+export default memo(GameBoard);

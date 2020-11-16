@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import styled from "styled-components";
 
 const SquareWrapper = styled.div`
@@ -16,7 +16,7 @@ const SquareWrapper = styled.div`
     div{
       font-family: Roboto;
       line-height: 1.3;
-      overflow: hidden;
+      overflow: hidden;s
       text-overflow: ellipsis;
       box-sizing: border-box;
       animation-name: appear;
@@ -37,7 +37,7 @@ const SquareWrapper = styled.div`
 function Square({char, clickHandler, i, j, ...props}) {
 
   return (
-    <SquareWrapper onClick={()=>{clickHandler(i,j)}} >
+    <SquareWrapper onClick={ ()=>{ !char && clickHandler( i , j )} } >
       <div>
         {char}
       </div>
@@ -45,4 +45,4 @@ function Square({char, clickHandler, i, j, ...props}) {
   );
 }
 
-export default Square;
+export default memo(Square);

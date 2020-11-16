@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, memo} from "react";
 import styled from "styled-components";
 import GameBoard from "./GameBoard";
 
@@ -41,12 +41,14 @@ const ResetButton = styled.button`
 
 function App() {
 
+  const [count, setCount] = useState(0);
+
   return (
     <AppWrapper>
-      <GameBoard />
-      <ResetButton>Reset</ResetButton>
+      <GameBoard gameCount={count} />
+      <ResetButton onClick={()=>{setCount(count + 1)}}>Reset</ResetButton>
     </AppWrapper>
   );
 }
 
-export default App;
+export default memo(App);
