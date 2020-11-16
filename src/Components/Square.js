@@ -1,20 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import {useState} from "react";
 
 
-function Square({char,clickHandler,i,j,...props}) {
+function Square({ square, clickHandler, i, j, turn,winner, ...props }) {
   return (
-    <SquareWrapper  onClick={()=> {clickHandler(i,j)}} >
-      <div>
-        {char}
+    <SquareWrapper onClick={() => { clickHandler(i, j, turn) }} >
+      <div style={square==="X"?{color: 'red'}:{color: 'green'},winner!=null && square===turn?{backgroundColor: 'red'}:{backgroundColor:'white'}} >
+        {square}
       </div>
     </SquareWrapper>
   );
 }
 const SquareWrapper = styled.div`
 flex-direction: row;
-background-color: "#c39ea0"};
 color: black;
 flex: 1 1 auto;
 display: block;
@@ -22,7 +20,8 @@ margin: 5px;
 width: 100%;
 font-size: 14vh;
 text-align: center;
-cursor: default;
+cursor: pointer;
+border: 5px outset #c39ea0;
 
 div{
   font-family: Roboto;
