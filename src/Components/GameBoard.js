@@ -34,6 +34,12 @@ function GameBoard({...props}) {
     ]
   );
 
+  const clickHandler = (i, j) => {
+    const shallowBoard = [...board];
+    shallowBoard[i][j] = "X";
+    setBoard(shallowBoard);
+  };
+
   const renderSquares = (row, i) => (
     row.map((square, ind)=>(
       (<Square i={i}
@@ -46,12 +52,6 @@ function GameBoard({...props}) {
   );
 
   const renderRows = board.map((row, ind) => <BoardRow key={ind}> {renderSquares(row, ind)} </BoardRow>);
-
-  const clickHandler = (i, j) => {
-    const shallowBoard = [...board];
-    shallowBoard[i][j] = "X";
-    setBoard(shallowBoard);
-  };
 
   return (
     <>
