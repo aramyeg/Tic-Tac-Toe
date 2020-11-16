@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 
-function Square({ square, clickHandler, i, j, turn,winner, ...props }) {
+function Square({ square,clickHandler,i,j,turn,winner,...props}) {
   return (
     <SquareWrapper onClick={() => { clickHandler(i, j, turn) }} >
-      <div style={square==="X"?{color: 'red'}:{color: 'green'},winner!=null && square===turn?{backgroundColor: 'red'}:{backgroundColor:'white'}} >
+      <div style={square==="X"?{color: 'red'}:{color: 'green'}} >
         {square}
       </div>
     </SquareWrapper>
