@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState, useEffect, memo} from "react";
 import styled from "styled-components";
 import Square from "./Square";
+import calculateWinner from "./CalculateWinner";
 
-function GameBoard({...props}) {
-
-  const GameBoardWrapper = styled.div`
+const GameBoardWrapper = styled.div`
+  
     display: flex;
     flex-direction: column;
     height: 60vh;
@@ -14,6 +14,7 @@ function GameBoard({...props}) {
   `;
 
   const BoardRow = styled.div`
+  
     flex: 1 1 auto; 
     display: flex;
     height: 100%;
@@ -26,28 +27,60 @@ function GameBoard({...props}) {
     padding: 10px;
   `;
 
+
+function GameBoard({gameCount, ...props}) {
+const [stepNumber, setStepNumber] = useState(0);
+const [boardSquares, setBoardSquares] = useState(Array(9).fill(null));
+const [xIsNext, setXIsNext] = useState(true);
+useEffect(() => {
+  setBoardSquares(Array(9).fill(null)); 
+  setXIsNext(true);
+}, [gameCount])
+
+
+const handleClick = index => {
+  const squares = [...boardSquares];  //copy of our board state
+  if (squares[index]) return;  // if the index of the board is filled, return
+  squares[index] = xIsNext ? "X" : "O"; //add X or O
+  setBoardSquares(squares);  //set the state of the board
+  setXIsNext(!xIsNext);   // set the state of the turn
+  
+  
+}
+ // return a square with the correct value and function
+const renderSquare = (index) => {
+  return <Square value={boardSquares[index]} onClick={() => handleClick(index)} />
+}
+
+const winner = calculateWinner(boardSquares);
+
+
+let status = winner ? `Winner is: ${winner}`:`Player Turn :${xIsNext ? "X" : "O"}`;
+ 
+
+
   return (
     <>
-      <HDependant>Player Turn : X</HDependant>
+      <HDependant>{status}</HDependant>
       <GameBoardWrapper >
         <BoardRow>
-          <Square/>
-          <Square/>
-          <Square/>
+           <Square value={renderSquare(0)}/>
+           <Square value={renderSquare(1)}/>
+           <Square value={renderSquare(2)}/>
         </BoardRow>
         <BoardRow>
-          <Square/>
-          <Square/>
-          <Square/>
+        <Square value={renderSquare(3)}/>
+        <Square value={renderSquare(4)}/>
+        <Square value={renderSquare(5)}/>
         </BoardRow>
         <BoardRow>
-          <Square/>
-          <Square/>
-          <Square/>
+        <Square value={renderSquare(6)}/>
+        <Square value={renderSquare(7)}/>
+        <Square value={renderSquare(8)}/>
         </BoardRow>
       </GameBoardWrapper>
     </>
   );
 }
 
-export default GameBoard;
+export default memo(GameBoard);

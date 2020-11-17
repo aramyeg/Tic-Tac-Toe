@@ -1,12 +1,12 @@
-import React from "react";
+import React, {memo} from "react";
 import styled from "styled-components";
 
 
 function Square({...props}) {
 
   const SquareWrapper = styled.div`
-    flex-direction: row;
-    background-color: ${props.color ? props.color : "#c39ea0"};
+  flex-direction: row;
+    background-color: #66f9b0;
     color: black;
     flex: 1 1 auto;
     display: block;
@@ -15,10 +15,31 @@ function Square({...props}) {
     font-size: 14vh;
     text-align: center;
     cursor: default;
-    
-    div{
+  
+// .squares {
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   border: none;
+//   flex-direction: row;
+//   background-color: red;
+//   color: black;
+//   flex: 1 1 auto;
+//   display: grid;
+//   margin: 0px;
+//   font-size: 10vh;
+//   text-align: center;
+//   cursor: default;
+  
+// }
+
+    .squares{
+      flex: 1 1 auto;
+      display: grid;
+      width: 100%;
+      height: 100%;
       font-family: Roboto;
-      line-height: 1.3;
+      line-height: 1.2;
       overflow: hidden;
       text-overflow: ellipsis;
       box-sizing: border-box;
@@ -27,23 +48,25 @@ function Square({...props}) {
       white-space: nowrap;
     }
     
-    @keyframes appear {
-      from {
-        transform: scale(0.1);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
+  
+
+    // @keyframes appear {
+    //   from {
+    //     transform: scale(0.1);
+    //   }
+    //   to {
+    //     transform: scale(1);
+    //   }
+    // }
   `;
 
   return (
-    <SquareWrapper >
-      <div>
-        {/*put X or O here */}
+    <SquareWrapper onClick={props.onClick} >
+      <div className="squares">
+        {props.value}
       </div>
     </SquareWrapper>
   );
 }
 
-export default Square;
+export default memo(Square);

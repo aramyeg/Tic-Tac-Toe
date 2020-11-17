@@ -1,10 +1,8 @@
-import React from "react";
+import React, {useState, memo} from "react";
 import styled from "styled-components";
 import GameBoard from "./GameBoard";
 
-function App() {
-
-  const AppWrapper = styled.div`
+const AppWrapper = styled.div`
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -24,13 +22,13 @@ function App() {
      color:#FFFFFF;
      text-align:center;
      transition: all 0.2s;
-     background: #fa255e;
+     background: #f966af;
      cursor: pointer;
      font-size: 6vh;
      font-family: Roboto;
      
      :hover{
-       color:#fa255e;
+       color:#f966af;
        background-color: black;
      }
      
@@ -41,12 +39,16 @@ function App() {
      }
   `;
 
+function App() {
+
+  const [count, setCount] = useState(0);
+
   return (
     <AppWrapper>
-      <GameBoard />
-      <ResetButton>Reset</ResetButton>
+    <GameBoard gameCount={count} />
+      <ResetButton onClick={()=>{setCount(count + 1)}}>Reset</ResetButton>
     </AppWrapper>
   );
 }
 
-export default App;
+export default memo(App);
