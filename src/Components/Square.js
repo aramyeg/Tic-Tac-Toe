@@ -1,14 +1,23 @@
-import React from "react";
+import React, {memo} from "react";
 import styled from "styled-components";
 
-
-function Square({ square,clickHandler,i,j,turn,winner,...props}) {
+function Square({ square, clickHandler, i, j, turn,...props }) {
   return (
+    <>
     <SquareWrapper onClick={() => { clickHandler(i, j, turn) }} >
-      <div style={square==="X"?{color: 'red'}:{color: 'green'}} >
+      <div
+        style={square === "X"
+          ?
+          { color: 'red' }
+          :
+          { color: 'green' }
+        }>
         {square}
       </div>
+      
     </SquareWrapper>
+
+    </>
   );
 }
 const SquareWrapper = styled.div`
@@ -43,4 +52,4 @@ div{
   }
 }
 `;
-export default Square;
+export default memo(Square);

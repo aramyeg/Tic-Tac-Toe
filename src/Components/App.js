@@ -1,13 +1,14 @@
-import React from "react";
+import React,{memo} from "react";
 import styled from "styled-components";
 import GameBoard from "./GameBoard";
 
-function App() {
+function App(){
   return (
+    <>
     <AppWrapper>
       <GameBoard />
-
     </AppWrapper>
+    </>
   );
 }
 const AppWrapper = styled.div`
@@ -18,6 +19,6 @@ const AppWrapper = styled.div`
     flex-direction: column;
   `;
 
-export default App;
+export default memo(App);
 
 
